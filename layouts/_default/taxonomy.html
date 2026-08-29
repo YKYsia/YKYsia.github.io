@@ -1,0 +1,6 @@
+{{ define "main" }}
+<div id="page"><article id="article-container" class="custom-page-content">
+  <div class="custom-page-heading"><i class="fas fa-tag" aria-hidden="true"></i><span>{{ .Title }}</span></div>
+  <div class="category-lists"><div class="category-list">{{ range .Pages.ByDate.Reverse }}<div class="category-list-item"><a class="category-list-link" href="{{ .RelPermalink }}">{{ .Title }}</a><span class="category-list-count">{{ .Date.Format "2006-01-02" }}</span></div>{{ end }}</div></div>
+</article></div>
+{{ end }}

@@ -5483,3 +5483,206 @@ blockquote.pullquote.right {
 .read-mode #article-container .note .note-icon {
   color: var(--font-color);
 }
+
+/* Custom empty-state and profile pages */
+#nav .site-page.active {
+  color: var(--white);
+}
+#nav .site-page.active:after {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  left: 14px;
+  height: 2px;
+  background: currentColor;
+  content: '';
+  border-radius: 2px;
+}
+#nav .menus_item_child .site-page.active:after {
+  display: none;
+}
+#sidebar-menus .site-page.active {
+  color: #49b1f5;
+}
+.custom-page-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  color: var(--font-color);
+  font-weight: 700;
+  font-size: 1.72em;
+}
+.custom-page-heading > i {
+  color: #8c79cf;
+}
+.site-empty-state {
+  padding: 48px 20px;
+  text-align: center;
+  color: #858585;
+}
+.site-empty-state > i {
+  display: block;
+  margin-bottom: 18px;
+  color: #b4a8df;
+  font-size: 3.5em;
+}
+.site-empty-state h2 {
+  margin: 0 0 8px;
+  color: var(--font-color);
+  font-size: 1.35em;
+}
+.site-empty-state p,
+.page-intro {
+  margin: 0;
+}
+.empty-archive {
+  min-height: 260px;
+}
+.empty-archive .site-empty-state {
+  margin-left: -20px;
+}
+.home-welcome-card {
+  position: relative;
+  overflow: hidden;
+  padding: 54px 44px;
+  min-height: 300px;
+  background: var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+  text-align: center;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.home-welcome-card:hover {
+  box-shadow: var(--card-hover-box-shadow);
+}
+.home-welcome-card:before {
+  position: absolute;
+  top: -90px;
+  right: -70px;
+  width: 220px;
+  height: 220px;
+  background: rgba(140,121,207,0.12);
+  content: '';
+  border-radius: 50%;
+}
+.welcome-mark {
+  margin: 0 auto 22px;
+  width: 68px;
+  height: 68px;
+  background: linear-gradient(135deg, #7867bd, #a993dc);
+  box-shadow: 0 8px 24px rgba(120,103,189,0.3);
+  color: #fff;
+  font-size: 28px;
+  line-height: 68px;
+  border-radius: 50%;
+}
+.home-welcome-card h2 {
+  margin: 0 0 10px;
+  font-size: 1.65em;
+}
+.home-welcome-card p {
+  margin-bottom: 24px;
+  color: #858585;
+}
+.welcome-link,
+.page-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: #8c79cf;
+  color: #fff !important;
+  border-radius: 22px;
+  transition: transform 0.25s, background 0.25s;
+}
+.welcome-link:hover,
+.page-action:hover {
+  background: #49b1f5;
+  transform: translateY(-2px);
+}
+.page-action-row {
+  margin-top: -28px;
+  padding-bottom: 24px;
+  text-align: center;
+}
+.profile-link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.profile-link-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(140,121,207,0.22);
+  background: rgba(140,121,207,0.06);
+  color: var(--font-color) !important;
+  border-radius: 10px;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.profile-link-card:hover {
+  border-color: #8c79cf;
+  box-shadow: 0 8px 20px rgba(120,103,189,0.14);
+  transform: translateY(-3px);
+}
+.profile-link-card > i:first-child {
+  width: 38px;
+  color: #8c79cf;
+  text-align: center;
+  font-size: 1.8em;
+}
+.profile-link-card > i:last-child {
+  margin-left: auto;
+  color: #aaa;
+  font-size: 0.8em;
+}
+.profile-link-card span {
+  display: flex;
+  flex-direction: column;
+}
+.profile-link-card small {
+  margin-top: 3px;
+  color: #858585;
+}
+.about-profile {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(120,103,189,0.13), rgba(73,177,245,0.08));
+  border-radius: 12px;
+}
+.about-profile img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border: 4px solid rgba(255,255,255,0.75);
+  border-radius: 50%;
+}
+.about-profile h2,
+.about-profile p {
+  margin: 0;
+}
+.about-profile p {
+  margin-top: 7px;
+  color: #858585;
+}
+.about-copy h2 {
+  margin-top: 24px;
+}
+@media screen and (max-width: 600px) {
+  .profile-link-grid {
+    grid-template-columns: 1fr;
+  }
+  .home-welcome-card {
+    padding: 42px 20px;
+  }
+  .about-profile {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -1,0 +1,6 @@
+{{ define "main" }}
+{{- $posts := where .Site.RegularPages "Section" "posts" -}}
+<div id="archive"><div class="article-sort-title">Articles</div>
+  {{ if gt (len $posts) 0 }}{{ range $posts.GroupByDate "2006" }}<div class="article-sort-item year">{{ .Key }}</div>{{ range .Pages }}<div class="article-sort-item"><a class="article-sort-item-img" href="{{ .RelPermalink }}" title="{{ .Title }}"><img src="{{ default "/img/404.jpg" .Params.cover }}" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="{{ .Title }}"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time></div><a class="article-sort-item-title" href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a></div></div>{{ end }}{{ end }}{{ else }}<div class="site-empty-state"><i class="fas fa-archive" aria-hidden="true"></i><h2>归档还是空的</h2><p>发布文章后，它们会按年份出现在这里。</p></div>{{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+  {{ partial "head.html" . }}
+  <body>
+    {{ partial "sidebar.html" . }}
+    <div class="{{ if eq .Section "posts" }}post{{ else }}page{{ end }}" id="body-wrap">
+      {{ partial "header.html" . }}
+      <main class="layout" id="content-inner">
+        {{ block "main" . }}{{ end }}
+        {{ partial "aside.html" . }}
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+    {{ partial "rightside.html" . }}
+    {{ partial "scripts.html" . }}
+  </body>
+</html>

@@ -1,0 +1,9 @@
+<div id="sidebar">
+  <div id="menu-mask"></div>
+  <div id="sidebar-menus">
+    <div class="avatar-img is-center"><img src="{{ .Site.Params.avatar }}" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div>
+    {{ partial "stats.html" . }}
+    <hr>
+    {{ partial "menu.html" . }}
+  </div>
+</div>

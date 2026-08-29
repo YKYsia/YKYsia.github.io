@@ -1,0 +1,91 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>{{ if .IsHome }}{{ .Site.Title }} - YKYsia的博客{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="author" content="{{ .Site.Params.author }}">
+  <meta name="copyright" content="{{ .Site.Params.author }}">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta property="og:type" content="{{ if eq .Section "posts" }}article{{ else }}website{{ end }}">
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta property="og:image" content="{{ absURL .Site.Params.avatar }}">
+  <meta property="article:author" content="{{ .Site.Params.author }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ .Title }}">
+  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta name="twitter:image" content="{{ absURL .Site.Params.avatar }}">
+  <link rel="shortcut icon" href="/img/label.png">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="preconnect" href="//cdn.jsdelivr.net">
+  <link rel="preconnect" href="//busuanzi.ibruce.info">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'">
+  <script>
+    const GLOBAL_CONFIG = {
+      root: '/', algolia: undefined, localSearch: undefined, translate: undefined,
+      noticeOutdate: undefined,
+      highlight: {plugin: 'highlighjs', highlightCopy: true, highlightLang: true, highlightHeightLimit: false},
+      copy: {success: 'Copy successfully', error: 'Copy error', noSupport: 'The browser does not support'},
+      relativeDate: {homepage: false, post: false}, runtime: '',
+      date_suffix: {just: 'Just', min: 'minutes ago', hour: 'hours ago', day: 'days ago', month: 'months ago'},
+      copyright: undefined, lightbox: 'fancybox', Snackbar: undefined,
+      source: {justifiedGallery: {js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js', css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'}},
+      isPhotoFigcaption: false, islazyload: false, isAnchor: false
+    };
+  </script>
+  <script id="config-diff">
+    var GLOBAL_CONFIG_SITE = {
+      title: {{ .Title | jsonify | safeJS }},
+      isPost: {{ if eq .Section "posts" }}true{{ else }}false{{ end }},
+      isHome: {{ if .IsHome }}true{{ else }}false{{ end }},
+      isHighlightShrink: false,
+      isToc: {{ if and (eq .Section "posts") .TableOfContents }}true{{ else }}false{{ end }},
+      postUpdate: {{ .Lastmod.Format "2006-01-02 15:04:05" | jsonify | safeJS }}
+    };
+  </script>
+  <noscript><style>
+    #nav, .justified-gallery img { opacity: 1; }
+    #recent-posts time, #post-meta time { display: inline !important; }
+  </style></noscript>
+  <script>
+    (win => {
+      win.saveToLocal = {
+        set(key, value, ttl) {
+          if (ttl === 0) return;
+          localStorage.setItem(key, JSON.stringify({value, expiry: Date.now() + ttl * 86400000}));
+        },
+        get(key) {
+          const raw = localStorage.getItem(key);
+          if (!raw) return undefined;
+          const item = JSON.parse(raw);
+          if (Date.now() > item.expiry) { localStorage.removeItem(key); return undefined; }
+          return item.value;
+        }
+      };
+      win.getScript = url => new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = url; script.async = true; script.onerror = reject; script.onload = resolve;
+        document.head.appendChild(script);
+      });
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0d0d0d');
+      };
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#ffffff');
+      };
+      const theme = saveToLocal.get('theme');
+      if (theme === 'dark') activateDarkMode(); else if (theme === 'light') activateLightMode();
+      if (saveToLocal.get('aside-status') === 'hide') document.documentElement.classList.add('hide-aside');
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) document.documentElement.classList.add('apple');
+    })(window);
+  </script>
+  <meta name="generator" content="Hugo {{ hugo.Version }}">
+</head>

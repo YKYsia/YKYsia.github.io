@@ -1,0 +1,33 @@
+baseURL = 'https://ykysia.github.io/'
+locale = 'zh-CN'
+title = '未遂'
+copyright = 'YKYsia'
+enableRobotsTXT = true
+enableGitInfo = false
+summaryLength = 90
+
+[permalinks]
+  posts = '/:year/:month/:day/:slug/'
+
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[params]
+  author = 'YKYsia'
+  description = '唇瓣间隙有一颗无限大的恒星'
+  avatar = '/img/headimg.jpg'
+  hero = '/img/index.png'
+  announcement = '大一在逃新生，不定时更博。'
+  startYear = 2020
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

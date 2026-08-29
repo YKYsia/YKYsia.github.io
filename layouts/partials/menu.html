@@ -1,0 +1,13 @@
+{{- $path := .RelPermalink -}}
+<div class="menus_items">
+  <div class="menus_item"><a class="site-page{{ if eq $path "/" }} active{{ end }}" href="/"{{ if eq $path "/" }} aria-current="page"{{ end }}><i class="fa-fw fas fa-home"></i><span> Home</span></a></div>
+  <div class="menus_item"><a class="site-page{{ if hasPrefix $path "/archives/" }} active{{ end }}" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div>
+  <div class="menus_item"><a class="site-page{{ if hasPrefix $path "/tags/" }} active{{ end }}" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div>
+  <div class="menus_item"><a class="site-page{{ if hasPrefix $path "/categories/" }} active{{ end }}" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div>
+  <div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child">
+    <li><a class="site-page child{{ if eq $path "/music/" }} active{{ end }}" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li>
+    <li><a class="site-page child{{ if eq $path "/movies/" }} active{{ end }}" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li>
+  </ul></div>
+  <div class="menus_item"><a class="site-page{{ if eq $path "/link/" }} active{{ end }}" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div>
+  <div class="menus_item"><a class="site-page{{ if eq $path "/about/" }} active{{ end }}" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div>
+</div>

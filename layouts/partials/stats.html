@@ -1,0 +1,6 @@
+{{- $posts := where .Site.RegularPages "Section" "posts" -}}
+<div class="site-data is-center">
+  <div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">{{ len $posts }}</div></a></div>
+  <div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">{{ len .Site.Taxonomies.tags }}</div></a></div>
+  <div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">{{ len .Site.Taxonomies.categories }}</div></a></div>
+</div>
