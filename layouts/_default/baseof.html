@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
   {{ partial "head.html" . }}
-  <body>
+  <body data-page-kind="{{ if .IsHome }}home{{ else }}page{{ end }}">
     {{ partial "sidebar.html" . }}
     <div class="{{ if eq .Section "posts" }}post{{ else }}page{{ end }}" id="body-wrap">
       {{ partial "header.html" . }}

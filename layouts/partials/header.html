@@ -5,9 +5,9 @@
 {{- else -}}
 <header class="not-home-page" id="page-header">
 {{- end }}
-  <nav id="nav"><span id="blog_name"><a id="site-name" href="/">{{ .Site.Title }}</a></span><div id="menus">{{ partial "menu.html" . }}<div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav>
+  <nav id="nav"><span id="blog_name"><a id="site-name" href="/" data-i18n="site.title">{{ .Site.Title }}</a></span><div id="menus">{{ partial "menu.html" . }}<span class="language-toggle-wrap"><button class="language-toggle" type="button" aria-label="Switch to English"><i class="fas fa-language" aria-hidden="true"></i><span class="language-toggle-label">EN</span></button></span><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav>
   {{ if .IsHome }}
-    <div id="site-info"><h1 id="site-title">{{ .Site.Title }}</h1><div id="site_social_icons">{{ partial "social.html" . }}</div></div>
+    <div id="site-info"><h1 id="site-title" data-i18n="site.title">{{ .Site.Title }}</h1><div id="site_social_icons">{{ partial "social.html" . }}</div></div>
     <div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div>
   {{ else if eq .Section "posts" }}
     <div id="post-info"><h1 class="post-title">{{ .Title }}</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Lastmod.Format "2006-01-02" }}</time></span></div><div class="meta-secondline"><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div>

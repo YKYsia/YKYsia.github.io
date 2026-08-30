@@ -1,7 +1,7 @@
 {{- $posts := where .Site.RegularPages "Section" "posts" -}}
 <div class="aside-content" id="aside-content">
   <div class="card-widget card-info">
-    <div class="is-center"><div class="avatar-img"><img src="{{ .Site.Params.avatar }}" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">{{ .Site.Params.author }}</div><div class="author-info__description">{{ .Site.Params.description }}</div></div>
+    <div class="is-center"><div class="avatar-img"><img src="{{ .Site.Params.avatar }}" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">{{ .Site.Params.author }}</div><div class="author-info__description" data-i18n="site.description">{{ .Site.Params.description }}</div></div>
     <div class="card-info-data is-center">
       <div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">{{ len $posts }}</div></a></div>
       <div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">{{ len .Site.Taxonomies.tags }}</div></a></div>
@@ -10,7 +10,8 @@
     <a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/YKYsia"><i class="fab fa-github"></i><span>Follow Me</span></a>
     <div class="card-info-social-icons is-center">{{ partial "social.html" . }}</div>
   </div>
-  <div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">{{ .Site.Params.announcement }}</div></div>
+  <div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content" data-i18n="announcement.copy">在逃研究生，正在更新博客中……
+偶尔失踪，通常是在和截止日期搏斗。</div></div>
   <div class="sticky_layout">
     {{ if and (eq .Section "posts") (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}<div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content">{{ .TableOfContents }}</div></div>{{ end }}
     {{ if and (eq .Section "posts") (gt (len $posts) 0) }}<div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list">{{ range first 5 $posts.ByDate.Reverse }}<div class="aside-list-item"><a class="thumbnail" href="{{ .RelPermalink }}" title="{{ .Title }}"><img src="{{ default "/img/404.jpg" .Params.cover }}" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="{{ .Title }}"></a><div class="content"><a class="title" href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time></div></div>{{ end }}</div></div>{{ end }}

@@ -25,8 +25,15 @@ summaryLength = 90
   description = '唇瓣间隙有一颗无限大的恒星'
   avatar = '/img/headimg.jpg'
   hero = '/img/index.png'
-  announcement = '大一在逃新生，不定时更博。'
   startYear = 2020
+
+[[module.mounts]]
+  source = 'static'
+  target = 'static'
+
+[[module.mounts]]
+  source = 'music'
+  target = 'static/music'
 
 [caches]
   [caches.images]

@@ -64,10 +64,10 @@ try {
 
     $userName = (& git config --get user.name 2>$null)
     if ([string]::IsNullOrWhiteSpace(($userName -join ""))) {
-        $userName = Read-Host "尚未配置 Git 用户名，请输入用户名（直接回车使用 YKYsia）"
-        if ([string]::IsNullOrWhiteSpace($userName)) {
-            $userName = "YKYsia"
-        }
+        do {
+            $userName = Read-Host "尚未配置 Git 用户名，请输入用户名"
+        } while ([string]::IsNullOrWhiteSpace($userName))
+
         Invoke-Git config user.name $userName.Trim()
         Write-Host "已为本项目配置用户名：$($userName.Trim())" -ForegroundColor Green
     }

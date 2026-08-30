@@ -2,6 +2,6 @@
 <div id="page"><article id="article-container" class="custom-page-content">
   <div class="custom-page-heading"><i class="fas fa-folder-open" aria-hidden="true"></i><span>{{ .Title }}</span></div>
   {{ if .Content }}{{ .Content }}{{ end }}
-  {{ if .Pages }}<div class="category-lists"><div class="category-list">{{ range .Pages.ByDate.Reverse }}<div class="category-list-item"><a class="category-list-link" href="{{ .RelPermalink }}">{{ .Title }}</a><span class="category-list-count">{{ .Date.Format "2006-01-02" }}</span></div>{{ end }}</div></div>{{ else }}<div class="site-empty-state"><i class="fas fa-box-open" aria-hidden="true"></i><h2>这里还没有内容</h2><p>新的条目会在这里出现。</p></div>{{ end }}
+  {{ if .Pages }}<div class="category-lists"><div class="category-list">{{ range .Pages.ByDate.Reverse }}<div class="category-list-item"><a class="category-list-link" href="{{ .RelPermalink }}">{{ .Title }}</a><span class="category-list-count">{{ .Date.Format "2006-01-02" }}</span></div>{{ end }}</div></div>{{ else }}<div class="site-empty-state"><i class="fas fa-box-open" aria-hidden="true"></i><h2 data-i18n="empty.heading">这里还没有内容</h2><p data-i18n="empty.copy">新的条目会在这里出现。</p></div>{{ end }}
 </article></div>
 {{ end }}
