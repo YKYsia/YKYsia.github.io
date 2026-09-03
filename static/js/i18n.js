@@ -23,6 +23,8 @@
       'link.scopus': '学术成果索引',
       'link.x': '碎片与近况',
       'link.instagram': '照片与生活',
+      'link.zhihu.name': '知乎',
+      'link.zhihu': '问答与分享',
       'link.weibo.name': '新浪微博',
       'link.weibo': '中文社交主页',
       'link.baidu-scholar.name': '百度学术',
@@ -66,6 +68,8 @@
       'link.scopus': 'Research output index',
       'link.x': 'Notes and updates',
       'link.instagram': 'Photos and life',
+      'link.zhihu.name': 'Zhihu',
+      'link.zhihu': 'Questions, answers and ideas',
       'link.weibo.name': 'Weibo',
       'link.weibo': 'Chinese social profile',
       'link.baidu-scholar.name': 'Baidu Scholar',
@@ -107,13 +111,15 @@
       if (value !== undefined) element.title = value;
     });
 
-    document.querySelectorAll('.language-toggle-label').forEach(label => {
-      label.textContent = lang === 'zh' ? 'EN' : '中文';
+    document.querySelectorAll('[data-language-switch]').forEach(group => {
+      group.setAttribute('aria-label', lang === 'zh' ? '语言选择' : 'Language selection');
     });
 
-    document.querySelectorAll('.language-toggle').forEach(button => {
-      button.setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切换为中文');
-      button.title = lang === 'zh' ? 'Switch to English' : '切换为中文';
+    document.querySelectorAll('[data-language-option]').forEach(button => {
+      const isActive = button.dataset.languageOption === lang;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+      button.title = button.dataset.languageOption === 'zh' ? '切换为中文' : 'Switch to English';
     });
 
     if (document.body.dataset.pageKind === 'home') {
@@ -123,16 +129,22 @@
     window.dispatchEvent(new CustomEvent('site-language-change', { detail: { language: lang } }));
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
+  const initializeLanguage = () => {
     const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
     const initialLanguage = normalizeLanguage(requestedLanguage || localStorage.getItem('site-language'));
     applyLanguage(initialLanguage);
-    document.querySelectorAll('.language-toggle').forEach(button => {
-      button.addEventListener('click', () => {
-        applyLanguage(document.documentElement.dataset.language === 'zh' ? 'en' : 'zh');
+    document.querySelectorAll('[data-language-option]').forEach(button => {
+      button.addEventListener('click', event => {
+        applyLanguage(event.currentTarget.dataset.languageOption);
       });
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeLanguage, { once: true });
+  } else {
+    initializeLanguage();
+  }
 
   window.siteI18n = { applyLanguage, messages };
 })();

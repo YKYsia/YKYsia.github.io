@@ -5,7 +5,7 @@
 {{- else -}}
 <header class="not-home-page" id="page-header">
 {{- end }}
-  <nav id="nav"><span id="blog_name"><a id="site-name" href="/" data-i18n="site.title">{{ .Site.Title }}</a></span><div id="menus">{{ partial "menu.html" . }}<span class="language-toggle-wrap"><button class="language-toggle" type="button" aria-label="Switch to English"><i class="fas fa-language" aria-hidden="true"></i><span class="language-toggle-label">EN</span></button></span><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav>
+  <nav id="nav"><span id="blog_name"><a id="site-name" href="/" data-i18n="site.title">{{ .Site.Title }}</a></span><div id="menus">{{ partial "menu.html" . }}<span class="language-switch-wrap">{{ partial "language-switch.html" . }}</span><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav>
   {{ if .IsHome }}
     <div id="site-info"><h1 id="site-title" data-i18n="site.title">{{ .Site.Title }}</h1><div id="site_social_icons">{{ partial "social.html" . }}</div></div>
     <div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div>
