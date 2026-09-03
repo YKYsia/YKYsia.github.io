@@ -23,9 +23,10 @@
   <link rel="canonical" href="{{ .Permalink }}">
   <link rel="preconnect" href="//cdn.jsdelivr.net">
   <link rel="preconnect" href="//busuanzi.ibruce.info">
-  <link rel="stylesheet" href="/css/index.css">
-  <link rel="stylesheet" href="/css/enhancements.css">
-  {{ if eq .RelPermalink "/music/" }}<link rel="stylesheet" href="/vendor/aplayer/APlayer.min.css">{{ end }}
+  {{- $assetVersion := now.Unix -}}
+  <link rel="stylesheet" href="/css/index.css?v={{ $assetVersion }}">
+  <link rel="stylesheet" href="/css/enhancements.css?v={{ $assetVersion }}">
+  {{ if eq .RelPermalink "/music/" }}<link rel="stylesheet" href="/vendor/aplayer/APlayer.min.css?v={{ $assetVersion }}">{{ end }}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'">
   <script>
@@ -89,6 +90,6 @@
       if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) document.documentElement.classList.add('apple');
     })(window);
   </script>
-  <script src="/js/i18n.js" defer></script>
+  <script src="/js/i18n.js?v={{ $assetVersion }}" defer></script>
   <meta name="generator" content="Hugo {{ hugo.Version }}">
 </head>
